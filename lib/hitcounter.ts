@@ -22,8 +22,8 @@ export class HitCounter extends cdk.Construct {
     });
     this.table = table;
 
-    this.handler = new lambda.Function(this, 'HitCounterHandler', {
-      runtime: lambda.Runtime.NODEJS_14_X,
+    this.handler = new lambda.Function(this, 'HitCounterHandler1', {
+      runtime: lambda.Runtime.NODEJS_12_X,
       handler: 'hitcounter.handler',
       code: lambda.Code.asset('lambda'),
       environment: {

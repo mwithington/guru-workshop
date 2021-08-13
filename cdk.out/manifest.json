@@ -1,0 +1,881 @@
+{
+  "version": "9.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "CdkWorkshop.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "CdkWorkshop.assets.json",
+        "requiresBootstrapStackVersion": 4,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "CdkWorkshop": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "CdkWorkshop.template.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6817a19578ebf5f9e9913f9e69a3e5bb476b47f3deedf3346aadc3044ee01a39.json",
+        "requiresBootstrapStackVersion": 4,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "CdkWorkshop.assets"
+        ]
+      },
+      "dependencies": [
+        "CdkWorkshop.assets"
+      ],
+      "metadata": {
+        "/CdkWorkshop/HelloHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HelloHandlerServiceRole11EF7C63",
+            "trace": [
+              "new Role (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/role.js:72:22)",
+              "new Function (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function.js:79:35)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:13:23)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/HelloHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HelloHandler2E4FBA4D",
+            "trace": [
+              "new Function (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function.js:135:26)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:13:23)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/HelloHitCounter/Hits/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HelloHitCounterHits7AAEBF80",
+            "trace": [
+              "new Table (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:456:22)",
+              "new HitCounter (/Users/michaelwithington/projects/guru-workshop/lib/hitcounter.js:10:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:18:34)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/HelloHitCounter/HitCounterHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HelloHitCounterHitCounterHandlerServiceRoleD45002B8",
+            "trace": [
+              "new Role (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/role.js:72:22)",
+              "new Function (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function.js:79:35)",
+              "new HitCounter (/Users/michaelwithington/projects/guru-workshop/lib/hitcounter.js:14:24)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:18:34)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/HelloHitCounter/HitCounterHandler/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HelloHitCounterHitCounterHandlerServiceRoleDefaultPolicy1487A60A",
+            "trace": [
+              "new Policy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/policy.js:56:26)",
+              "Role.addToPrincipalPolicy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/role.js:205:34)",
+              "Function.addToPrincipal (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/grant.js:90:65)",
+              "Table.combinedGrant (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:384:35)",
+              "Table.grantReadWriteData (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:173:21)",
+              "new HitCounter (/Users/michaelwithington/projects/guru-workshop/lib/hitcounter.js:24:15)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:18:34)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/HelloHitCounter/HitCounterHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HelloHitCounterHitCounterHandlerDAEA7B37",
+            "trace": [
+              "new Function (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function.js:135:26)",
+              "new HitCounter (/Users/michaelwithington/projects/guru-workshop/lib/hitcounter.js:14:24)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:18:34)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointEEF1FD8F",
+            "trace": [
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:401:26)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointCloudWatchRoleC3C64E0F",
+            "trace": [
+              "new Role (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/role.js:72:22)",
+              "LambdaRestApi._configureCloudWatchRole (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:250:22)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:417:18)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointAccountB8304247",
+            "trace": [
+              "LambdaRestApi._configureCloudWatchRole (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:254:26)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:417:18)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointDeployment318525DA0866e388862809702a5b9b5e72a481d9",
+            "trace": [
+              "new Deployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/deployment.js:48:25)",
+              "LambdaRestApi._configureDeployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:278:38)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:419:14)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointDeploymentStageprodB78BEEA0",
+            "trace": [
+              "new Stage (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/stage.js:61:26)",
+              "LambdaRestApi._configureDeployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:286:36)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:419:14)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Endpoint8024A810",
+            "trace": [
+              "LambdaRestApi._configureDeployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:290:13)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:419:14)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Endpointproxy39E2174E",
+            "trace": [
+              "new Resource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:231:26)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:309:9)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Default/{proxy+}/ANY/ApiPermission.CdkWorkshopEndpoint14920A60.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointproxyANYApiPermissionCdkWorkshopEndpoint14920A60ANYproxyAF5D6A4D",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:44:22)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:334:22)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Default/{proxy+}/ANY/ApiPermission.Test.CdkWorkshopEndpoint14920A60.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointproxyANYApiPermissionTestCdkWorkshopEndpoint14920A60ANYproxyD4C247FA",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:51:26)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:334:22)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointproxyANYC09721C5",
+            "trace": [
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:57:26)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:334:22)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Default/ANY/ApiPermission.CdkWorkshopEndpoint14920A60.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointANYApiPermissionCdkWorkshopEndpoint14920A60ANYF1631E47",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:44:22)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "RootResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:331:37)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Default/ANY/ApiPermission.Test.CdkWorkshopEndpoint14920A60.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointANYApiPermissionTestCdkWorkshopEndpoint14920A60ANY7B2A650C",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:51:26)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "RootResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:331:37)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/Endpoint/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointANY485C938B",
+            "trace": [
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:57:26)",
+              "RootResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:331:37)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:22:25)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/Rendered/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterRenderedServiceRole254DB4EA",
+            "trace": [
+              "new Role (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/role.js:72:22)",
+              "new Function (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function.js:79:35)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:14:25)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/Rendered/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterRenderedServiceRoleDefaultPolicy9ADB8C83",
+            "trace": [
+              "new Policy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/policy.js:56:26)",
+              "Role.addToPrincipalPolicy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/role.js:205:34)",
+              "Function.addToPrincipal (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/grant.js:90:65)",
+              "Table.combinedGrant (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:384:35)",
+              "Table.grantReadData (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:115:21)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:24:21)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/Rendered/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterRendered9C783E45",
+            "trace": [
+              "new Function (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function.js:135:26)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:14:25)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpoint5A0EF326",
+            "trace": [
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:401:26)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointCloudWatchRole87B94D6A",
+            "trace": [
+              "new Role (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-iam/lib/role.js:72:22)",
+              "LambdaRestApi._configureCloudWatchRole (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:250:22)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:417:18)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointAccount0B75E76A",
+            "trace": [
+              "LambdaRestApi._configureCloudWatchRole (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:254:26)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:417:18)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointDeployment1CE7C576d9f3793f5041effc5d117928624c82a7",
+            "trace": [
+              "new Deployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/deployment.js:48:25)",
+              "LambdaRestApi._configureDeployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:278:38)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:419:14)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointDeploymentStageprodF3901FC7",
+            "trace": [
+              "new Stage (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/stage.js:61:26)",
+              "LambdaRestApi._configureDeployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:286:36)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:419:14)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointCA1B1E4B",
+            "trace": [
+              "LambdaRestApi._configureDeployment (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:290:13)",
+              "new RestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/restapi.js:419:14)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:25:9)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointproxy2F4C239F",
+            "trace": [
+              "new Resource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:231:26)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:309:9)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Default/{proxy+}/ANY/ApiPermission.CdkWorkshopViewHitCounterViewerEndpointA09A91D0.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointproxyANYApiPermissionCdkWorkshopViewHitCounterViewerEndpointA09A91D0ANYproxyBF9706FE",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:44:22)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:334:22)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Default/{proxy+}/ANY/ApiPermission.Test.CdkWorkshopViewHitCounterViewerEndpointA09A91D0.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointproxyANYApiPermissionTestCdkWorkshopViewHitCounterViewerEndpointA09A91D0ANYproxy5CA924F3",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:51:26)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:334:22)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointproxyANYFF4B8F5B",
+            "trace": [
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:57:26)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:334:22)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Default/ANY/ApiPermission.CdkWorkshopViewHitCounterViewerEndpointA09A91D0.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointANYApiPermissionCdkWorkshopViewHitCounterViewerEndpointA09A91D0ANYFBE3BA6C",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:44:22)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "RootResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:331:37)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Default/ANY/ApiPermission.Test.CdkWorkshopViewHitCounterViewerEndpointA09A91D0.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointANYApiPermissionTestCdkWorkshopViewHitCounterViewerEndpointA09A91D0ANY38AF0A12",
+            "trace": [
+              "Function.addPermission (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-lambda/lib/function-base.js:40:9)",
+              "LambdaIntegration.bind (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.js:51:26)",
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:41:40)",
+              "RootResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:331:37)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/ViewHitCounter/ViewerEndpoint/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ViewHitCounterViewerEndpointANY66F2285B",
+            "trace": [
+              "new Method (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/method.js:57:26)",
+              "RootResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:36:16)",
+              "ProxyResource.addMethod (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:331:37)",
+              "new ProxyResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:317:35)",
+              "RootResource.addProxy (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/resource.js:44:16)",
+              "new LambdaRestApi (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/aws-apigateway/lib/lambda-api.js:31:23)",
+              "new TableViewer (/Users/michaelwithington/projects/guru-workshop/node_modules/cdk-dynamo-table-viewer/lib/table-viewer.js:25:22)",
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:25:20)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/GatewayUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GatewayUrl",
+            "trace": [
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:30:27)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/TableViewerUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TableViewerUrl",
+            "trace": [
+              "new CdkWorkshopStack (/Users/michaelwithington/projects/guru-workshop/lib/cdk-workshop-stack.js:33:28)",
+              "Object.<anonymous> (/Users/michaelwithington/projects/guru-workshop/bin/cdk-workshop.js:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:999:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)",
+              "Module.load (internal/modules/cjs/loader.js:863:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:708:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/CdkWorkshop/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:9",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:184:9)",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "injectMetadataResources (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:117:5)",
+              "Object.synthesize (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "process.<anonymous> (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/app.js:50:51)",
+              "Object.onceWrapper (events.js:421:26)",
+              "process.emit (events.js:314:20)"
+            ]
+          }
+        ],
+        "/CdkWorkshop/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:30:35)",
+              "/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:9",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:184:9)",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "injectMetadataResources (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:117:5)",
+              "Object.synthesize (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "process.<anonymous> (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/app.js:50:51)",
+              "Object.onceWrapper (events.js:421:26)",
+              "process.emit (events.js:314:20)"
+            ]
+          }
+        ],
+        "/CdkWorkshop/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion",
+            "trace": [
+              "addBootstrapVersionRule (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.js:412:19)",
+              "DefaultStackSynthesizer.synthesize (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.js:194:13)",
+              "/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:143:35",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:184:9)",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "synthesizeTree (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:137:5)",
+              "Object.synthesize (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:33:5)",
+              "App.synth (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "process.<anonymous> (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/app.js:50:51)",
+              "Object.onceWrapper (events.js:421:26)",
+              "process.emit (events.js:314:20)"
+            ]
+          }
+        ],
+        "/CdkWorkshop/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion",
+            "trace": [
+              "addBootstrapVersionRule (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.js:420:5)",
+              "DefaultStackSynthesizer.synthesize (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stack-synthesizers/default-synthesizer.js:194:13)",
+              "/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:143:35",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:184:9)",
+              "visit (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "synthesizeTree (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:137:5)",
+              "Object.synthesize (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/private/synthesis.js:33:5)",
+              "App.synth (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "process.<anonymous> (/Users/michaelwithington/projects/guru-workshop/node_modules/@aws-cdk/core/lib/app.js:50:51)",
+              "Object.onceWrapper (events.js:421:26)",
+              "process.emit (events.js:314:20)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
