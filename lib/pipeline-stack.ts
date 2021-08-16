@@ -11,12 +11,12 @@ export class WorkshopPipelineStack extends cdk.Stack {
 
         // This creates a new CodeCommit repository called 'WorkshopRepo'
         const repo = new codecommit.Repository(this, 'WorkshopRepo', {
-            repositoryName: "WorkshopRepo"
+            repositoryName: "guru-workshop"
         });
 
         // Defines the artifact representing the sourcecode
-        const sourceArtifact = new codepipeline.Artifact(); 
-        // Defines the artifact representing the cloud assembly 
+        const sourceArtifact = new codepipeline.Artifact();
+        // Defines the artifact representing the cloud assembly
         // (cloudformation template + all other assets)
         const cloudAssemblyArtifact = new codepipeline.Artifact();
 
@@ -61,7 +61,8 @@ export class WorkshopPipelineStack extends cdk.Stack {
             commands: [
                 'curl -Ssf $ENDPOINT_URL/',
                 'curl -Ssf $ENDPOINT_URL/hello',
-                'curl -Ssf $ENDPOINT_URL/test'
+                'curl -Ssf $ENDPOINT_URL/test',
+                'ls -la'
             ]
         }));
     }
