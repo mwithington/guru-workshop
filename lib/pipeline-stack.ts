@@ -1,7 +1,7 @@
 import * as cdk from '@aws-cdk/core';
 import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
-import * as codecommit from '@aws-cdk/aws-codecommit';
+// import * as codecommit from '@aws-cdk/aws-codecommit';
 import { WorkshopPipelineStage } from './pipeline-stage';
 import { ShellScriptAction, SimpleSynthAction, CdkPipeline } from "@aws-cdk/pipelines";
 
@@ -31,7 +31,7 @@ export class WorkshopPipelineStack extends cdk.Stack {
               repo: 'guru-workshop',
               output: sourceArtifact,
               actionName: 'github-commit',
-              oauthToken: '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'
+              oauthToken: new cdk.SecretValue('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')
             }),
 
             // Builds our source code outlined above into a could assembly artifact
