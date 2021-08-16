@@ -10,9 +10,9 @@ export class WorkshopPipelineStack extends cdk.Stack {
         super(scope, id, props);
 
         // This creates a new CodeCommit repository called 'WorkshopRepo'
-        const repo = new codecommit.Repository(this, 'WorkshopRepo', {
-            repositoryName: "guru-workshop"
-        });
+        // const repo = new codecommit.GitHubSourceAction(this, 'WorkshopRepo', {
+        //     repositoryName: "guru-workshop"
+        // });
 
         // Defines the artifact representing the sourcecode
         const sourceArtifact = new codepipeline.Artifact();
@@ -25,12 +25,13 @@ export class WorkshopPipelineStack extends cdk.Stack {
         const pipeline = new CdkPipeline(this, 'Pipeline', {
             pipelineName: 'WorkshopPipeline',
             cloudAssemblyArtifact,
-
-            // Generates the source artifact from the repo we created in the last step
-            sourceAction: new codepipeline_actions.CodeCommitSourceAction({
-                actionName: 'CodeCommit', // Any Git-based source control
-                output: sourceArtifact, // Indicates where the artifact is stored
-                repository: repo // Designates the repo to draw code from
+            sourceAction: new codepipeline_actions.GitHubSourceAction({
+              branch: 'main',
+              owner: 'mwithington',
+              repo: 'guru-workshop',
+              output: sourceArtifact,
+              actionName: 'github-commit',
+              oauthToken: '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'
             }),
 
             // Builds our source code outlined above into a could assembly artifact

@@ -1,82 +1,5 @@
 {
   "Resources": {
-    "WorkshopRepoE6F95803": {
-      "Type": "AWS::CodeCommit::Repository",
-      "Properties": {
-        "RepositoryName": "guru-workshop"
-      },
-      "Metadata": {
-        "aws:cdk:path": "CdkWorkshop/WorkshopRepo/Resource"
-      }
-    },
-    "WorkshopRepoCdkWorkshopPipeline2E7FD98EEventRule471EF8DF": {
-      "Type": "AWS::Events::Rule",
-      "Properties": {
-        "EventPattern": {
-          "source": [
-            "aws.codecommit"
-          ],
-          "resources": [
-            {
-              "Fn::GetAtt": [
-                "WorkshopRepoE6F95803",
-                "Arn"
-              ]
-            }
-          ],
-          "detail-type": [
-            "CodeCommit Repository State Change"
-          ],
-          "detail": {
-            "event": [
-              "referenceCreated",
-              "referenceUpdated"
-            ],
-            "referenceName": [
-              "master"
-            ]
-          }
-        },
-        "State": "ENABLED",
-        "Targets": [
-          {
-            "Arn": {
-              "Fn::Join": [
-                "",
-                [
-                  "arn:",
-                  {
-                    "Ref": "AWS::Partition"
-                  },
-                  ":codepipeline:",
-                  {
-                    "Ref": "AWS::Region"
-                  },
-                  ":",
-                  {
-                    "Ref": "AWS::AccountId"
-                  },
-                  ":",
-                  {
-                    "Ref": "Pipeline9850B417"
-                  }
-                ]
-              ]
-            },
-            "Id": "Target0",
-            "RoleArn": {
-              "Fn::GetAtt": [
-                "PipelineEventsRole96280D9B",
-                "Arn"
-              ]
-            }
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "CdkWorkshop/WorkshopRepo/CdkWorkshopPipeline2E7FD98EEventRule/Resource"
-      }
-    },
     "PipelineArtifactsBucketEncryptionKeyF5BF0670": {
       "Type": "AWS::KMS::Key",
       "Properties": {
@@ -134,25 +57,6 @@
                 "AWS": {
                   "Fn::GetAtt": [
                     "PipelineRoleB27FAA37",
-                    "Arn"
-                  ]
-                }
-              },
-              "Resource": "*"
-            },
-            {
-              "Action": [
-                "kms:Decrypt",
-                "kms:DescribeKey",
-                "kms:Encrypt",
-                "kms:ReEncrypt*",
-                "kms:GenerateDataKey*"
-              ],
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": {
-                  "Fn::GetAtt": [
-                    "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA",
                     "Arn"
                   ]
                 }
@@ -538,16 +442,6 @@
               "Effect": "Allow",
               "Resource": {
                 "Fn::GetAtt": [
-                  "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA",
-                  "Arn"
-                ]
-              }
-            },
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Resource": {
-                "Fn::GetAtt": [
                   "PipelineBuildSynthCodePipelineActionRole4E7A6C97",
                   "Arn"
                 ]
@@ -649,32 +543,23 @@
               {
                 "ActionTypeId": {
                   "Category": "Source",
-                  "Owner": "AWS",
-                  "Provider": "CodeCommit",
+                  "Owner": "ThirdParty",
+                  "Provider": "GitHub",
                   "Version": "1"
                 },
                 "Configuration": {
-                  "RepositoryName": {
-                    "Fn::GetAtt": [
-                      "WorkshopRepoE6F95803",
-                      "Name"
-                    ]
-                  },
-                  "BranchName": "master",
+                  "Owner": "mwithington",
+                  "Repo": "guru-workshop",
+                  "Branch": "main",
+                  "OAuthToken": "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",
                   "PollForSourceChanges": false
                 },
-                "Name": "CodeCommit",
+                "Name": "github-commit",
                 "OutputArtifacts": [
                   {
-                    "Name": "Artifact_Source_CodeCommit"
+                    "Name": "Artifact_Source_github-commit"
                   }
                 ],
-                "RoleArn": {
-                  "Fn::GetAtt": [
-                    "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA",
-                    "Arn"
-                  ]
-                },
                 "RunOrder": 1
               }
             ],
@@ -697,7 +582,7 @@
                 },
                 "InputArtifacts": [
                   {
-                    "Name": "Artifact_Source_CodeCommit"
+                    "Name": "Artifact_Source_github-commit"
                   }
                 ],
                 "Name": "Synth",
@@ -1001,189 +886,28 @@
         "aws:cdk:path": "CdkWorkshop/Pipeline/Pipeline/Resource"
       }
     },
-    "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA": {
-      "Type": "AWS::IAM::Role",
+    "PipelineSourcegithubcommitWebhookResource65C7F11B": {
+      "Type": "AWS::CodePipeline::Webhook",
       "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId"
-                      },
-                      ":root"
-                    ]
-                  ]
-                }
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "CdkWorkshop/Pipeline/Pipeline/Source/CodeCommit/CodePipelineActionRole/Resource"
-      }
-    },
-    "PipelineSourceCodeCommitCodePipelineActionRoleDefaultPolicy3CEB31C0": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "s3:GetObject*",
-                "s3:GetBucket*",
-                "s3:List*",
-                "s3:DeleteObject*",
-                "s3:PutObject*",
-                "s3:Abort*"
-              ],
-              "Effect": "Allow",
-              "Resource": [
-                {
-                  "Fn::GetAtt": [
-                    "PipelineArtifactsBucketAEA9A052",
-                    "Arn"
-                  ]
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      {
-                        "Fn::GetAtt": [
-                          "PipelineArtifactsBucketAEA9A052",
-                          "Arn"
-                        ]
-                      },
-                      "/*"
-                    ]
-                  ]
-                }
-              ]
-            },
-            {
-              "Action": [
-                "kms:Decrypt",
-                "kms:DescribeKey",
-                "kms:Encrypt",
-                "kms:ReEncrypt*",
-                "kms:GenerateDataKey*"
-              ],
-              "Effect": "Allow",
-              "Resource": {
-                "Fn::GetAtt": [
-                  "PipelineArtifactsBucketEncryptionKeyF5BF0670",
-                  "Arn"
-                ]
-              }
-            },
-            {
-              "Action": [
-                "codecommit:GetBranch",
-                "codecommit:GetCommit",
-                "codecommit:UploadArchive",
-                "codecommit:GetUploadArchiveStatus",
-                "codecommit:CancelUploadArchive"
-              ],
-              "Effect": "Allow",
-              "Resource": {
-                "Fn::GetAtt": [
-                  "WorkshopRepoE6F95803",
-                  "Arn"
-                ]
-              }
-            }
-          ],
-          "Version": "2012-10-17"
+        "Authentication": "GITHUB_HMAC",
+        "AuthenticationConfiguration": {
+          "SecretToken": "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"
         },
-        "PolicyName": "PipelineSourceCodeCommitCodePipelineActionRoleDefaultPolicy3CEB31C0",
-        "Roles": [
+        "Filters": [
           {
-            "Ref": "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA"
+            "JsonPath": "$.ref",
+            "MatchEquals": "refs/heads/{Branch}"
           }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "CdkWorkshop/Pipeline/Pipeline/Source/CodeCommit/CodePipelineActionRole/DefaultPolicy/Resource"
-      }
-    },
-    "PipelineEventsRole96280D9B": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "events.amazonaws.com"
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "CdkWorkshop/Pipeline/Pipeline/EventsRole/Resource"
-      }
-    },
-    "PipelineEventsRoleDefaultPolicy62809D8F": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "codepipeline:StartPipelineExecution",
-              "Effect": "Allow",
-              "Resource": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":codepipeline:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "Pipeline9850B417"
-                    }
-                  ]
-                ]
-              }
-            }
-          ],
-          "Version": "2012-10-17"
+        ],
+        "TargetAction": "github-commit",
+        "TargetPipeline": {
+          "Ref": "Pipeline9850B417"
         },
-        "PolicyName": "PipelineEventsRoleDefaultPolicy62809D8F",
-        "Roles": [
-          {
-            "Ref": "PipelineEventsRole96280D9B"
-          }
-        ]
+        "TargetPipelineVersion": 1,
+        "RegisterWithThirdParty": true
       },
       "Metadata": {
-        "aws:cdk:path": "CdkWorkshop/Pipeline/Pipeline/EventsRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "CdkWorkshop/Pipeline/Pipeline/Source/github-commit/WebhookResource"
       }
     },
     "PipelineBuildSynthCodePipelineActionRole4E7A6C97": {
@@ -2612,7 +2336,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAAE01Qy1KEMBD8lr1ns4IXvYkcvVBYfgCbjDoQEiqTrGVR+XcnBNRT90zSj5pKPj7Iu9PT8EVnpafLqpwHub6GQU2idZaCjyqIHshFr0C07/Y/5x8aAzqbRHZgtQbl5hmDXHtYHGFw/ruojikJuIENxD+iKY6MSWTtggsYtNyg21l+P3gS08yyF9gcMzQGB8rDRpKge7k+RzVByMvCksBh5jC3h2XsnEG1uRRW0q8Rjf6L7rwbQW1OO01JHA25R6un35Zvix4CHGOj8k1EF68G6bMhgkD7jkV83A9gK8uRcqTLraplXcvqNBLi2UcbcAbZF/wBmtz97KEBAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAE01PwU7EIBT8lr2/ZW296M26Ry9NjfHcwtN9hULTBxpD+Heh7eqe3sxkmBkq8fgg7g5P/TcfpdKnKN2CIr76Xmo4O8t+CdJDh+zCIhHOH/YWZ4ciT84mmGlGQxZZxLPS7c7gbVa9xyttZDFDGwZDfGmY0fOu5Ue59RMTlC15h8JrpIh/cbnzFr/jcHFOJ9BT7n3BnyKW0xjquZAVJOB7EZ+D1OiLuKEE1E8ids5s/yq3dYbkmrKhBGXIEMio/xXt4kaUa9IOU0pgs1GMfPqqalHXojqMTHRcgvU0oei2+wsmnZlzcAEAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "CdkWorkshop/CDKMetadata/Default"

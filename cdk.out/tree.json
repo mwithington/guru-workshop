@@ -16,113 +16,6 @@
         "id": "CdkWorkshop",
         "path": "CdkWorkshop",
         "children": {
-          "WorkshopRepo": {
-            "id": "WorkshopRepo",
-            "path": "CdkWorkshop/WorkshopRepo",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "CdkWorkshop/WorkshopRepo/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::CodeCommit::Repository",
-                  "aws:cdk:cloudformation:props": {
-                    "repositoryName": "guru-workshop"
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-codecommit.CfnRepository",
-                  "version": "1.98.0"
-                }
-              },
-              "CdkWorkshopPipeline2E7FD98EEventRule": {
-                "id": "CdkWorkshopPipeline2E7FD98EEventRule",
-                "path": "CdkWorkshop/WorkshopRepo/CdkWorkshopPipeline2E7FD98EEventRule",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "CdkWorkshop/WorkshopRepo/CdkWorkshopPipeline2E7FD98EEventRule/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::Events::Rule",
-                      "aws:cdk:cloudformation:props": {
-                        "eventPattern": {
-                          "source": [
-                            "aws.codecommit"
-                          ],
-                          "resources": [
-                            {
-                              "Fn::GetAtt": [
-                                "WorkshopRepoE6F95803",
-                                "Arn"
-                              ]
-                            }
-                          ],
-                          "detail-type": [
-                            "CodeCommit Repository State Change"
-                          ],
-                          "detail": {
-                            "event": [
-                              "referenceCreated",
-                              "referenceUpdated"
-                            ],
-                            "referenceName": [
-                              "master"
-                            ]
-                          }
-                        },
-                        "state": "ENABLED",
-                        "targets": [
-                          {
-                            "id": "Target0",
-                            "arn": {
-                              "Fn::Join": [
-                                "",
-                                [
-                                  "arn:",
-                                  {
-                                    "Ref": "AWS::Partition"
-                                  },
-                                  ":codepipeline:",
-                                  {
-                                    "Ref": "AWS::Region"
-                                  },
-                                  ":",
-                                  {
-                                    "Ref": "AWS::AccountId"
-                                  },
-                                  ":",
-                                  {
-                                    "Ref": "Pipeline9850B417"
-                                  }
-                                ]
-                              ]
-                            },
-                            "roleArn": {
-                              "Fn::GetAtt": [
-                                "PipelineEventsRole96280D9B",
-                                "Arn"
-                              ]
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/aws-events.CfnRule",
-                      "version": "1.98.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-events.Rule",
-                  "version": "1.98.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "@aws-cdk/aws-codecommit.Repository",
-              "version": "1.98.0"
-            }
-          },
           "Pipeline": {
             "id": "Pipeline",
             "path": "CdkWorkshop/Pipeline",
@@ -195,25 +88,6 @@
                                     "AWS": {
                                       "Fn::GetAtt": [
                                         "PipelineRoleB27FAA37",
-                                        "Arn"
-                                      ]
-                                    }
-                                  },
-                                  "Resource": "*"
-                                },
-                                {
-                                  "Action": [
-                                    "kms:Decrypt",
-                                    "kms:DescribeKey",
-                                    "kms:Encrypt",
-                                    "kms:ReEncrypt*",
-                                    "kms:GenerateDataKey*"
-                                  ],
-                                  "Effect": "Allow",
-                                  "Principal": {
-                                    "AWS": {
-                                      "Fn::GetAtt": [
-                                        "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA",
                                         "Arn"
                                       ]
                                     }
@@ -655,16 +529,6 @@
                                       "Effect": "Allow",
                                       "Resource": {
                                         "Fn::GetAtt": [
-                                          "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA",
-                                          "Arn"
-                                        ]
-                                      }
-                                    },
-                                    {
-                                      "Action": "sts:AssumeRole",
-                                      "Effect": "Allow",
-                                      "Resource": {
-                                        "Fn::GetAtt": [
                                           "PipelineBuildSynthCodePipelineActionRole4E7A6C97",
                                           "Arn"
                                         ]
@@ -782,35 +646,26 @@
                             "name": "Source",
                             "actions": [
                               {
-                                "name": "CodeCommit",
+                                "name": "github-commit",
                                 "outputArtifacts": [
                                   {
-                                    "name": "Artifact_Source_CodeCommit"
+                                    "name": "Artifact_Source_github-commit"
                                   }
                                 ],
                                 "actionTypeId": {
                                   "category": "Source",
                                   "version": "1",
-                                  "owner": "AWS",
-                                  "provider": "CodeCommit"
+                                  "owner": "ThirdParty",
+                                  "provider": "GitHub"
                                 },
                                 "configuration": {
-                                  "RepositoryName": {
-                                    "Fn::GetAtt": [
-                                      "WorkshopRepoE6F95803",
-                                      "Name"
-                                    ]
-                                  },
-                                  "BranchName": "master",
+                                  "Owner": "mwithington",
+                                  "Repo": "guru-workshop",
+                                  "Branch": "main",
+                                  "OAuthToken": "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",
                                   "PollForSourceChanges": false
                                 },
-                                "runOrder": 1,
-                                "roleArn": {
-                                  "Fn::GetAtt": [
-                                    "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA",
-                                    "Arn"
-                                  ]
-                                }
+                                "runOrder": 1
                               }
                             ]
                           },
@@ -821,7 +676,7 @@
                                 "name": "Synth",
                                 "inputArtifacts": [
                                   {
-                                    "name": "Artifact_Source_CodeCommit"
+                                    "name": "Artifact_Source_github-commit"
                                   }
                                 ],
                                 "outputArtifacts": [
@@ -1137,156 +992,36 @@
                     "id": "Source",
                     "path": "CdkWorkshop/Pipeline/Pipeline/Source",
                     "children": {
-                      "CodeCommit": {
-                        "id": "CodeCommit",
-                        "path": "CdkWorkshop/Pipeline/Pipeline/Source/CodeCommit",
+                      "github-commit": {
+                        "id": "github-commit",
+                        "path": "CdkWorkshop/Pipeline/Pipeline/Source/github-commit",
                         "children": {
-                          "CodePipelineActionRole": {
-                            "id": "CodePipelineActionRole",
-                            "path": "CdkWorkshop/Pipeline/Pipeline/Source/CodeCommit/CodePipelineActionRole",
-                            "children": {
-                              "Resource": {
-                                "id": "Resource",
-                                "path": "CdkWorkshop/Pipeline/Pipeline/Source/CodeCommit/CodePipelineActionRole/Resource",
-                                "attributes": {
-                                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
-                                  "aws:cdk:cloudformation:props": {
-                                    "assumeRolePolicyDocument": {
-                                      "Statement": [
-                                        {
-                                          "Action": "sts:AssumeRole",
-                                          "Effect": "Allow",
-                                          "Principal": {
-                                            "AWS": {
-                                              "Fn::Join": [
-                                                "",
-                                                [
-                                                  "arn:",
-                                                  {
-                                                    "Ref": "AWS::Partition"
-                                                  },
-                                                  ":iam::",
-                                                  {
-                                                    "Ref": "AWS::AccountId"
-                                                  },
-                                                  ":root"
-                                                ]
-                                              ]
-                                            }
-                                          }
-                                        }
-                                      ],
-                                      "Version": "2012-10-17"
-                                    }
-                                  }
+                          "WebhookResource": {
+                            "id": "WebhookResource",
+                            "path": "CdkWorkshop/Pipeline/Pipeline/Source/github-commit/WebhookResource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::CodePipeline::Webhook",
+                              "aws:cdk:cloudformation:props": {
+                                "authentication": "GITHUB_HMAC",
+                                "authenticationConfiguration": {
+                                  "secretToken": "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"
                                 },
-                                "constructInfo": {
-                                  "fqn": "@aws-cdk/aws-iam.CfnRole",
-                                  "version": "1.98.0"
-                                }
-                              },
-                              "DefaultPolicy": {
-                                "id": "DefaultPolicy",
-                                "path": "CdkWorkshop/Pipeline/Pipeline/Source/CodeCommit/CodePipelineActionRole/DefaultPolicy",
-                                "children": {
-                                  "Resource": {
-                                    "id": "Resource",
-                                    "path": "CdkWorkshop/Pipeline/Pipeline/Source/CodeCommit/CodePipelineActionRole/DefaultPolicy/Resource",
-                                    "attributes": {
-                                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
-                                      "aws:cdk:cloudformation:props": {
-                                        "policyDocument": {
-                                          "Statement": [
-                                            {
-                                              "Action": [
-                                                "s3:GetObject*",
-                                                "s3:GetBucket*",
-                                                "s3:List*",
-                                                "s3:DeleteObject*",
-                                                "s3:PutObject*",
-                                                "s3:Abort*"
-                                              ],
-                                              "Effect": "Allow",
-                                              "Resource": [
-                                                {
-                                                  "Fn::GetAtt": [
-                                                    "PipelineArtifactsBucketAEA9A052",
-                                                    "Arn"
-                                                  ]
-                                                },
-                                                {
-                                                  "Fn::Join": [
-                                                    "",
-                                                    [
-                                                      {
-                                                        "Fn::GetAtt": [
-                                                          "PipelineArtifactsBucketAEA9A052",
-                                                          "Arn"
-                                                        ]
-                                                      },
-                                                      "/*"
-                                                    ]
-                                                  ]
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "Action": [
-                                                "kms:Decrypt",
-                                                "kms:DescribeKey",
-                                                "kms:Encrypt",
-                                                "kms:ReEncrypt*",
-                                                "kms:GenerateDataKey*"
-                                              ],
-                                              "Effect": "Allow",
-                                              "Resource": {
-                                                "Fn::GetAtt": [
-                                                  "PipelineArtifactsBucketEncryptionKeyF5BF0670",
-                                                  "Arn"
-                                                ]
-                                              }
-                                            },
-                                            {
-                                              "Action": [
-                                                "codecommit:GetBranch",
-                                                "codecommit:GetCommit",
-                                                "codecommit:UploadArchive",
-                                                "codecommit:GetUploadArchiveStatus",
-                                                "codecommit:CancelUploadArchive"
-                                              ],
-                                              "Effect": "Allow",
-                                              "Resource": {
-                                                "Fn::GetAtt": [
-                                                  "WorkshopRepoE6F95803",
-                                                  "Arn"
-                                                ]
-                                              }
-                                            }
-                                          ],
-                                          "Version": "2012-10-17"
-                                        },
-                                        "policyName": "PipelineSourceCodeCommitCodePipelineActionRoleDefaultPolicy3CEB31C0",
-                                        "roles": [
-                                          {
-                                            "Ref": "PipelineSourceCodeCommitCodePipelineActionRole48F8DEFA"
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    "constructInfo": {
-                                      "fqn": "@aws-cdk/aws-iam.CfnPolicy",
-                                      "version": "1.98.0"
-                                    }
+                                "filters": [
+                                  {
+                                    "jsonPath": "$.ref",
+                                    "matchEquals": "refs/heads/{Branch}"
                                   }
+                                ],
+                                "targetAction": "github-commit",
+                                "targetPipeline": {
+                                  "Ref": "Pipeline9850B417"
                                 },
-                                "constructInfo": {
-                                  "fqn": "@aws-cdk/aws-iam.Policy",
-                                  "version": "1.98.0"
-                                }
+                                "targetPipelineVersion": 1,
+                                "registerWithThirdParty": true
                               }
                             },
                             "constructInfo": {
-                              "fqn": "@aws-cdk/aws-iam.Role",
+                              "fqn": "@aws-cdk/aws-codepipeline.CfnWebhook",
                               "version": "1.98.0"
                             }
                           }
@@ -1299,102 +1034,6 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.Construct",
-                      "version": "1.98.0"
-                    }
-                  },
-                  "EventsRole": {
-                    "id": "EventsRole",
-                    "path": "CdkWorkshop/Pipeline/Pipeline/EventsRole",
-                    "children": {
-                      "Resource": {
-                        "id": "Resource",
-                        "path": "CdkWorkshop/Pipeline/Pipeline/EventsRole/Resource",
-                        "attributes": {
-                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
-                          "aws:cdk:cloudformation:props": {
-                            "assumeRolePolicyDocument": {
-                              "Statement": [
-                                {
-                                  "Action": "sts:AssumeRole",
-                                  "Effect": "Allow",
-                                  "Principal": {
-                                    "Service": "events.amazonaws.com"
-                                  }
-                                }
-                              ],
-                              "Version": "2012-10-17"
-                            }
-                          }
-                        },
-                        "constructInfo": {
-                          "fqn": "@aws-cdk/aws-iam.CfnRole",
-                          "version": "1.98.0"
-                        }
-                      },
-                      "DefaultPolicy": {
-                        "id": "DefaultPolicy",
-                        "path": "CdkWorkshop/Pipeline/Pipeline/EventsRole/DefaultPolicy",
-                        "children": {
-                          "Resource": {
-                            "id": "Resource",
-                            "path": "CdkWorkshop/Pipeline/Pipeline/EventsRole/DefaultPolicy/Resource",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
-                              "aws:cdk:cloudformation:props": {
-                                "policyDocument": {
-                                  "Statement": [
-                                    {
-                                      "Action": "codepipeline:StartPipelineExecution",
-                                      "Effect": "Allow",
-                                      "Resource": {
-                                        "Fn::Join": [
-                                          "",
-                                          [
-                                            "arn:",
-                                            {
-                                              "Ref": "AWS::Partition"
-                                            },
-                                            ":codepipeline:",
-                                            {
-                                              "Ref": "AWS::Region"
-                                            },
-                                            ":",
-                                            {
-                                              "Ref": "AWS::AccountId"
-                                            },
-                                            ":",
-                                            {
-                                              "Ref": "Pipeline9850B417"
-                                            }
-                                          ]
-                                        ]
-                                      }
-                                    }
-                                  ],
-                                  "Version": "2012-10-17"
-                                },
-                                "policyName": "PipelineEventsRoleDefaultPolicy62809D8F",
-                                "roles": [
-                                  {
-                                    "Ref": "PipelineEventsRole96280D9B"
-                                  }
-                                ]
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "@aws-cdk/aws-iam.CfnPolicy",
-                              "version": "1.98.0"
-                            }
-                          }
-                        },
-                        "constructInfo": {
-                          "fqn": "@aws-cdk/aws-iam.Policy",
-                          "version": "1.98.0"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/aws-iam.Role",
                       "version": "1.98.0"
                     }
                   },

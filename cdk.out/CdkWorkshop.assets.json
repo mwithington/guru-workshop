@@ -1,7 +1,7 @@
 {
   "version": "9.0.0",
   "files": {
-    "9c3af82cd9d0b3dc2eec57f4ff772be73adcf0a1eb44c363d5118ba72247ecc3": {
+    "dcfb5e85c2f28ea38afa239c631e9271605a940d30f169640337ee4875820e10": {
       "source": {
         "path": "CdkWorkshop.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "9c3af82cd9d0b3dc2eec57f4ff772be73adcf0a1eb44c363d5118ba72247ecc3.json",
+          "objectKey": "dcfb5e85c2f28ea38afa239c631e9271605a940d30f169640337ee4875820e10.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }
