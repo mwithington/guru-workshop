@@ -109,3 +109,6 @@ dist
 node_modules
 !lambda/*.js
 !jest.config.js
+
+cdk.out/
+.history/

@@ -1,6 +1,6 @@
-import * as cdk from '@aws-cdk/core';
-import * as codepipeline from '@aws-cdk/aws-codepipeline';
-import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
+import * as cdk from 'aws-cdk-lib';
+import * as codecommit from 'aws-cdk-lib/aws-codecommit';
+import { Construct } from 'constructs';
 // import * as codecommit from '@aws-cdk/aws-codecommit';
 import { WorkshopPipelineStage } from './pipeline-stage';
 import { ShellScriptAction, SimpleSynthAction, CdkPipeline } from "@aws-cdk/pipelines";
