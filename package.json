@@ -15,11 +15,11 @@
         "@types/jest": "^26.0.10",
         "@types/node": "^10.17.28",
         "typescript": "^3.9.7",
-        "@aws-cdk/assert": "2.10.0",
-        "aws-cdk": "2.10.0"
+        "@aws-cdk/assert": "2.10.0"
     },
     "dependencies": {
         "aws-cdk-lib": "^2.0.0",
-        "constructs": "^10.0.5"
+        "constructs": "^10.0.5",
+        "aws-cdk": "2.10.0"
     }
 }

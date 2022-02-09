@@ -12,7 +12,7 @@ exports.handler = async function(event) {
     TableName: process.env.HITS_TABLE_NAME,
     Key: { path: { S: event.path } },
     UpdateExpression: 'ADD hits :incr',
-    ExpressionAttributeValues: { ':incr': { N: '11111111' } }
+    ExpressionAttributeValues: { ':incr': { N: '1' } }
   }).promise();
 
   // call downstream function and capture response
