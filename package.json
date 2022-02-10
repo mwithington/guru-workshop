@@ -7,6 +7,7 @@
         "cdk-workshop": "bin/cdk-workshop.js"
     },
     "scripts": {
+        "test": "jest",
         "build": "tsc",
         "watch": "tsc -w",
         "cdk": "cdk"
@@ -20,6 +21,7 @@
     "dependencies": {
         "aws-cdk-lib": "^2.0.0",
         "constructs": "^10.0.5",
-        "aws-cdk": "2.10.0"
+        "aws-cdk": "2.10.0",
+        "cdk-dynamo-table-viewer": "^0.2.0"
     }
 }

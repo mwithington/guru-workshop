@@ -1,6 +1,6 @@
 import { expect as expectCDK, haveResource } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
-import * as lambda from '@aws-cdk/aws-lambda';
+import * as cdk from 'aws-cdk-lib/core';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { HitCounter } from '../lib/hitcounter';
 
 test('DynamoDB Table Created', () => {
@@ -9,7 +9,7 @@ test('DynamoDB Table Created', () => {
     const tableCreateLambda = new lambda.Function(stack, 'TestFunction', {
         runtime: lambda.Runtime.NODEJS_12_X,
         handler: 'lambda.handler',
-        code: lambda.Code.inline('test')
+        code: lambda.Code.fromInline('test')
     });
 
     new HitCounter(stack, 'MyTestConstruct', {
@@ -31,7 +31,7 @@ test('Lambda Has Environment Variables', () => {
         downstream: new lambda.Function(stack, 'TestFunction', {
             runtime: lambda.Runtime.NODEJS_12_X,
             handler: 'lambda.handler',
-            code: lambda.Code.inline('test')
+            code: lambda.Code.fromInline('test')
         })
     });
 
@@ -57,7 +57,7 @@ test('Read Capacity can be configured', () => {
             downstream: new lambda.Function(stack, 'TestFunction', {
                 runtime: lambda.Runtime.NODEJS_12_X,
                 handler: 'lambda.handler',
-                code: lambda.Code.inline('test')
+                code: lambda.Code.fromInline('test')
             })
         });
     }).toThrowError(/readCapacity must be greater than 5 and less than 20/);
