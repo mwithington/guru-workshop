@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { WorkshopPipelineStage } from './pipeline-stage';
@@ -8,15 +9,15 @@ export class WorkshopPipelineStack extends cdk.Stack {
     super(scope, id, props);
 
     // This creates a new CodeCommit repository called 'WorkshopRepo'
-    const repoName = 'guru-workshop';
+    const repoName = _.get(process, 'env.GITHUB_USER', 'guru-workshop');
 
     // The basic pipeline declaration. This sets the initial structure
     // of our pipeline
-
+    const gitHubUser = _.get(process, 'env.GITHUB_USER', 'mwithington');
     const pipeline = new CodePipeline(this, 'Pipeline', {
       pipelineName: 'WorkshopPipeline',
       synth: new CodeBuildStep('SynthStep', {
-        input: CodePipelineSource.gitHub(`mwithington/${repoName}`, 'main'),
+        input: CodePipelineSource.gitHub(`${gitHubUser}/${repoName}`, 'main'),
         installCommands: [
           'npm install -g aws-cdk'
         ],

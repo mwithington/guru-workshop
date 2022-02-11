@@ -7,21 +7,31 @@
         "cdk-workshop": "bin/cdk-workshop.js"
     },
     "scripts": {
+        "====ENVIRONMENT SCRIPTS====": "",
+        "bootstrap:us:east-1": "npx cdk bootstrap",
+        "bootstrap:us:west-2": "npx cdk bootstrap",
+        "bootstrap:eu:west-1": "npx cdk bootstrap",
+        "====DEPLOY SCRIPTS====": "",
+        "deploy": "npx cdk deploy",
+        "build:deploy": "tsc && npx cdk deploy",
+        "====BASIC SCRIPTS====": "",
         "test": "jest",
         "build": "tsc",
         "watch": "tsc -w",
         "cdk": "cdk"
     },
     "devDependencies": {
+        "@aws-cdk/assert": "2.10.0",
         "@types/jest": "^26.0.10",
-        "@types/node": "^10.17.28",
-        "typescript": "^3.9.7",
-        "@aws-cdk/assert": "2.10.0"
+        "@types/lodash": "^4.14.178",
+        "@types/node": "^10.17.60",
+        "typescript": "^3.9.7"
     },
     "dependencies": {
-        "aws-cdk-lib": "^2.0.0",
-        "constructs": "^10.0.5",
         "aws-cdk": "2.10.0",
-        "cdk-dynamo-table-viewer": "^0.2.0"
+        "aws-cdk-lib": "^2.0.0",
+        "cdk-dynamo-table-viewer": "^0.2.0",
+        "constructs": "^10.0.5",
+        "lodash": "^4.17.21"
     }
 }
