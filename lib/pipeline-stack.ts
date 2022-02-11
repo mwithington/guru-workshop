@@ -1,6 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import * as codecommit from 'aws-cdk-lib/aws-codecommit';
 import { WorkshopPipelineStage } from './pipeline-stage';
 import { CodeBuildStep, CodePipeline, CodePipelineSource } from "aws-cdk-lib/pipelines";
 
@@ -9,7 +8,7 @@ export class WorkshopPipelineStack extends cdk.Stack {
     super(scope, id, props);
 
     // This creates a new CodeCommit repository called 'WorkshopRepo'
-    const repoName = '';
+    const repoName = 'guru-workshop';
 
     // The basic pipeline declaration. This sets the initial structure
     // of our pipeline
