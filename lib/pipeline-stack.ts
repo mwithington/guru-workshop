@@ -14,10 +14,11 @@ export class WorkshopPipelineStack extends cdk.Stack {
     // The basic pipeline declaration. This sets the initial structure
     // of our pipeline
     const gitHubUser = _.get(process, 'env.GITHUB_USER', 'mwithington');
+    const branchName = _.get(process, 'env.BRANCH_NAME', 'main');
     const pipeline = new CodePipeline(this, 'Pipeline', {
       pipelineName: 'WorkshopPipeline',
       synth: new CodeBuildStep('SynthStep', {
-        input: CodePipelineSource.gitHub(`${gitHubUser}/${repoName}`, 'main'),
+        input: CodePipelineSource.gitHub(`${gitHubUser}/${repoName}`, branchName),
         installCommands: [
           'npm install -g aws-cdk'
         ],
@@ -30,8 +31,22 @@ export class WorkshopPipelineStack extends cdk.Stack {
       )
     });
 
-    const deploy = new WorkshopPipelineStage(this, 'Deploy');
-    const deployStage = pipeline.addStage(deploy);
+    const pipelineWave = pipeline.addWave('us-wave');
+
+    // Main region deploy
+    const deploy = new WorkshopPipelineStage(this, 'EastDeploy', {
+      env: {
+        region: 'us-east-1'
+      }
+    });
+    // Sub region deploy
+    const deploySubRegion = new WorkshopPipelineStage(this, 'WestDeploy', {
+      env: {
+        region: 'us-west-2'
+      }
+    });
+    pipelineWave.addStage(deploySubRegion);
+    const deployStage = pipelineWave.addStage(deploy);
 
     deployStage.addPost(
       new CodeBuildStep('TestViewerEndpoint', {
