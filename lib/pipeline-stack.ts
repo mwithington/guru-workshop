@@ -48,30 +48,30 @@ export class WorkshopPipelineStack extends cdk.Stack {
     //   }
     // });
     // pipelineWave.addStage(deploySubRegion);
-    // const deployStage = pipelineWave.addStage(deploy);
-    pipelineWave.addStage(deploy);
+    const deployStage = pipelineWave.addStage(deploy);
+    // pipelineWave.addStage(deploy);
 
-    // deployStage.addPost(
-    //   new CodeBuildStep('TestViewerEndpoint', {
-    //     projectName: 'TestViewerEndpoint',
-    //     envFromCfnOutputs: {
-    //       ENDPOINT_URL: deploy.hcViewerUrl
-    //     },
-    //     commands: [
-    //       'curl -Ssf $ENDPOINT_URL'
-    //     ]
-    //   }),
-    //   new CodeBuildStep('TestAPIGatewayEndpoint', {
-    //     projectName: 'TestAPIGatewayEndpoint',
-    //     envFromCfnOutputs: {
-    //       ENDPOINT_URL: deploy.hcEndpoint
-    //     },
-    //     commands: [
-    //       'curl -Ssf $ENDPOINT_URL',
-    //       'curl -Ssf $ENDPOINT_URL/hello',
-    //       'curl -Ssf $ENDPOINT_URL/test'
-    //     ]
-    //   })
-    // )
+    deployStage.addPost(
+      new CodeBuildStep('TestViewerEndpoint', {
+        projectName: 'TestViewerEndpoint',
+        envFromCfnOutputs: {
+          ENDPOINT_URL: deploy.hcViewerUrl
+        },
+        commands: [
+          'curl -Ssf $ENDPOINT_URL'
+        ]
+      }),
+      new CodeBuildStep('TestAPIGatewayEndpoint', {
+        projectName: 'TestAPIGatewayEndpoint',
+        envFromCfnOutputs: {
+          ENDPOINT_URL: deploy.hcEndpoint
+        },
+        commands: [
+          'curl -Ssf $ENDPOINT_URL',
+          'curl -Ssf $ENDPOINT_URL/hello',
+          'curl -Ssf $ENDPOINT_URL/test'
+        ]
+      })
+    )
   }
 }
